@@ -1,0 +1,94 @@
+--- &id004 !ruby/object:Node 
+modifiable: true
+table: 
+  :parent: 
+  :tag: :root
+  :children: 
+  - &id001 !ruby/object:Node 
+    modifiable: true
+    table: 
+      :open: true
+      :parent: *id004
+      :tag: :baker_street
+      :children: 
+      - !ruby/object:Node 
+        modifiable: true
+        table: 
+          :open: true
+          :parent: *id001
+          :tag: :side_walk
+          :children: []
+
+          :exit_west: :hall_way_ground_floor
+      - &id003 !ruby/object:Node 
+        modifiable: true
+        table: 
+          :open: true
+          :parent: *id001
+          :tag: :hall_way_ground_floor
+          :children: 
+          - &id002 !ruby/object:Player 
+            modifiable: true
+            table: 
+              :open: true
+              :parent: *id003
+              :tag: :player
+              :children: 
+              - !ruby/object:Node 
+                modifiable: true
+                table: 
+                  :open: true
+                  :parent: *id002
+                  :tag: :pipe
+                  :children: []
+
+                  :name: pipe
+                  :words: 
+                  - clay
+                  - empty
+                  :script_accept: "              if [:tobacco].include?(args[0].tag) && children.empty?\n                return true\n              elsif !children.empty?\n                puts \"The pipe is already filled with tobacco...\"\n                return false\n              else\n                puts \"You can't put that in the pipe...\"\n                return false\n              end\n"
+              - !ruby/object:Node 
+                modifiable: true
+                table: 
+                  :open: false
+                  :parent: *id002
+                  :tag: :tobacco
+                  :children: []
+
+                  :name: tobacco
+                  :words: 
+                  - strong
+                  - dry
+              - !ruby/object:Node 
+                modifiable: true
+                table: 
+                  :open: false
+                  :parent: *id002
+                  :tag: :matches
+                  :children: []
+
+                  :name: matches
+                  :words: 
+                  - dry
+                  :script_use: "              if args[0].tag == :pipe\n                if !args[0].children.empty?\n                  puts \"You lit your pipe\"\n                  return\n                else\n                  puts \"Put tobacco in your pipe before lighting it\"\n                end\n              else\n                puts \"You can't use matches on that\"\n                return\n              end\n"
+          :exit_east: :side_walk
+          :exit_up: :hall_way_first_floor
+      - !ruby/object:Node 
+        modifiable: true
+        table: 
+          :open: true
+          :parent: *id001
+          :tag: :hall_way_first_floor
+          :children: []
+
+          :exit_north: :sitting_room_first_floor
+          :exit_down: :hall_way_ground_floor
+      - !ruby/object:Node 
+        modifiable: true
+        table: 
+          :open: true
+          :parent: *id001
+          :tag: :sitting_room_first_floor
+          :children: []
+
+          :exit_south: :hall_way_first_floor
