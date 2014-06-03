@@ -24,7 +24,7 @@ class Node < OpenStruct
 
   # Load node structure from YAML file
   def self.load(file='save.yaml')
-    YAML::load_file(file)
+    yaml = YAML::load_file(file)
   end
 
   # Override 'puts' method for scene descriptions

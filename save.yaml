@@ -1,94 +1,127 @@
---- &id004 !ruby/object:Node 
-modifiable: true
+--- &id006 !ruby/object:Node 
 table: 
-  :parent: 
-  :tag: :root
   :children: 
-  - &id001 !ruby/object:Node 
-    modifiable: true
+  - &id002 !ruby/object:Node 
     table: 
-      :open: true
-      :parent: *id004
-      :tag: :baker_street
+      :short_desc: "    LOCATION: Baker Street\n"
       :children: 
       - !ruby/object:Node 
-        modifiable: true
         table: 
-          :open: true
-          :parent: *id001
-          :tag: :side_walk
+          :short_desc: "      SCENE: Sidewalk in front of 221B Baker Str.\n"
+          :exit_west: :hall_way_ground_floor
           :children: []
 
-          :exit_west: :hall_way_ground_floor
-      - &id003 !ruby/object:Node 
-        modifiable: true
-        table: 
           :open: true
-          :parent: *id001
-          :tag: :hall_way_ground_floor
+          :parent: *id002
+          :described: true
+          :tag: :side_walk
+          :desc: "      You are standing on the sidewalk in front of 221B Baker Str. You are facing north, with the front door of your chambers to your west.\n"
+      - &id003 !ruby/object:Node 
+        table: 
+          :short_desc: "      SCENE: Ground floor hallway of 221B Baker Str.\n"
+          :exit_east: :side_walk
+          :exit_up: :hall_way_first_floor
           :children: 
-          - &id002 !ruby/object:Player 
-            modifiable: true
+          - &id001 !ruby/object:Node 
             table: 
-              :open: true
-              :parent: *id003
-              :tag: :player
+              :short_desc: "        A small table.\n"
+              :presence: "        You see a small table placed against the wall.\n"
               :children: 
               - !ruby/object:Node 
-                modifiable: true
                 table: 
-                  :open: true
-                  :parent: *id002
-                  :tag: :pipe
+                  :short_desc: "          A Telegram from detective inspector Lestrade.\n"
                   :children: []
 
-                  :name: pipe
+                  :open: false
+                  :parent: *id001
+                  :words: []
+
+                  :tag: :telegram_1
+                  :name: telegram_1
+                  :desc: "          TELEGRAM: Mysterious case - stop - Lauriston Gardens nr. 3 - stop - come as soon as possible - stop - Lestrade\n"
+              :open: false
+              :parent: *id003
+              :words: []
+
+              :tag: :table
+              :name: table
+              :desc: "        A small table in the hallway on the ground floor. Any mail or telegrams recieved when you are not at home is usually\n        put on this table.\n"
+          :open: true
+          :parent: *id002
+          :described: true
+          :tag: :hall_way_ground_floor
+          :desc: "      You are in the hallway on the ground floor of 221B Baker Str. Your chambers are up the stairs, on the first and\n      second floor. The front door leading to the sidewalk outside is east of you.\n"
+      - &id005 !ruby/object:Node 
+        table: 
+          :short_desc: "      SCENE: First floor hallway of 221B Baker Str.\n"
+          :exit_down: :hall_way_ground_floor
+          :children: 
+          - &id004 !ruby/object:Player 
+            table: 
+              :children: 
+              - !ruby/object:Node 
+                table: 
+                  :short_desc: "          A clay pipe.\n"
+                  :children: []
+
+                  :open: true
+                  :parent: *id004
                   :words: 
                   - clay
                   - empty
-                  :script_accept: "              if [:tobacco].include?(args[0].tag) && children.empty?\n                return true\n              elsif !children.empty?\n                puts \"The pipe is already filled with tobacco...\"\n                return false\n              else\n                puts \"You can't put that in the pipe...\"\n                return false\n              end\n"
+                  :script_accept: "          if [:tobacco].include?(args[0].tag) && children.empty?\n            return true\n          elsif !children.empty?\n            puts \"The pipe is already filled with tobacco...\"\n            return false\n          else\n            puts \"You can't put that in the pipe...\"\n            return false\n          end\n"
+                  :tag: :pipe
+                  :name: pipe
+                  :desc: "          A clay pipe for times when extraordinary concentration of thought is needed. Used with tobacco and matches.\n"
               - !ruby/object:Node 
-                modifiable: true
                 table: 
-                  :open: false
-                  :parent: *id002
-                  :tag: :tobacco
+                  :short_desc: "          Dry tobacco.\n"
                   :children: []
 
-                  :name: tobacco
+                  :open: false
+                  :parent: *id004
                   :words: 
                   - strong
                   - dry
+                  :tag: :tobacco
+                  :name: tobacco
+                  :desc: "          Dry tobacco used to fill a pipe.\n"
               - !ruby/object:Node 
-                modifiable: true
                 table: 
-                  :open: false
-                  :parent: *id002
-                  :tag: :matches
+                  :script_use: "          if args[0].tag == :pipe\n            if !args[0].children.empty?\n              puts \"You lit your pipe\"\n              return\n            else\n              puts \"Put tobacco in your pipe before lighting it\"\n            end\n          else\n            puts \"You can't use matches on that\"\n            return\n          end\n"
+                  :short_desc: "          Box of matches.\n"
                   :children: []
 
-                  :name: matches
+                  :open: false
+                  :parent: *id004
                   :words: 
                   - dry
-                  :script_use: "              if args[0].tag == :pipe\n                if !args[0].children.empty?\n                  puts \"You lit your pipe\"\n                  return\n                else\n                  puts \"Put tobacco in your pipe before lighting it\"\n                end\n              else\n                puts \"You can't use matches on that\"\n                return\n              end\n"
-          :exit_east: :side_walk
-          :exit_up: :hall_way_first_floor
-      - !ruby/object:Node 
-        modifiable: true
-        table: 
+                  :tag: :matches
+                  :name: matches
+                  :desc: "          These matches can be used on multiple items, when a flame is needed.\n"
+              :open: true
+              :parent: *id005
+              :tag: :player
           :open: true
-          :parent: *id001
+          :parent: *id002
+          :described: true
           :tag: :hall_way_first_floor
-          :children: []
-
+          :desc: "      You find yourself in the hallway on the first floor of 221B Baker Str. North of you is the door to your sitting room. Down the stairs\n      you will find the ground floor hallway.\n"
           :exit_north: :sitting_room_first_floor
-          :exit_down: :hall_way_ground_floor
       - !ruby/object:Node 
-        modifiable: true
         table: 
-          :open: true
-          :parent: *id001
-          :tag: :sitting_room_first_floor
+          :short_desc: "      SCENE: Sitting room at 221B Baker Str.\n"
           :children: []
 
+          :open: true
           :exit_south: :hall_way_first_floor
+          :parent: *id002
+          :tag: :sitting_room_first_floor
+          :desc: "      You are in your sitting room on the first floor of 221B Baker Str. The windows to your east provide a view\n      of Baker Str. itself, and to your south is the door to the first floor stairwell.\n"
+      :open: true
+      :parent: *id006
+      :described: true
+      :tag: :baker_street
+      :desc: "    Your current location is Baker Street, London. It's the street that you call home, and where your chambers are. You share your\n    rooms with dr. Watson, on the first and second floor of 221B. The landlady is a kind, older woman called Mrs. Hudson.\n"
+  :parent: 
+  :tag: :root

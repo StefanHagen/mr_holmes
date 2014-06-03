@@ -16,30 +16,6 @@ class Player < Node
     end
   end
 
-  # Loop method performed after player input
-  # def play
-  #   loop do
-  #     print "> What now? "
-
-  #     input = gets.chomp
-  #     verb = input.split(' ').first
-      
-  #     case verb
-  #     when "load"
-  #       root = Node.load
-  #       puts "Loaded..."
-  #     when "save"
-  #       Node.save(root)
-  #       puts "Saved..."
-  #     when "quit"
-  #       puts "Goodbye!"
-  #       exit
-  #     else
-  #       command(input)
-  #     end
-  #   end
-  # end
-
   # Provide command shortcuts
   %w{ north south east west up down }.each do|dir|
     define_method("do_#{dir}") do
@@ -175,12 +151,16 @@ class Player < Node
 
   # ----------------------------------------------------------------- Debugging
 
-  # Display the complede node structure
+  def do_root(*a)
+    STDOUT.puts get_root
+  end
+
+  # Display the complete node structure
   def do_map(*a)
     STDOUT.puts get_root
   end
 
-  # Display the complede node structure
+  # Display the complete node structure in detail
   def do_map_detailed(*a)
     STDOUT.puts get_root.to_s(true)
   end
