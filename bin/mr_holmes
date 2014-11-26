@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require_relative  '../lib/sherlock'
+require_relative  '../lib/mr_holmes'

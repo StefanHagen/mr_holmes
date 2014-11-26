@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'sherlock/node'
-require 'sherlock/player'
+require 'mr_holmes/node'
+require 'mr_holmes/player'
 
 require 'yaml'
 

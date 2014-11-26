@@ -1,6 +1,6 @@
 require "yaml"
 require "ostruct"
-require "sherlock/string"
+require "mr_holmes/string"
 
 class Node < OpenStruct
 
