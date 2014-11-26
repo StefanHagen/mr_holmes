@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 
-abort "you need to write me"
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+require_relative  '../lib/sherlock'
