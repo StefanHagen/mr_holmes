@@ -7,13 +7,14 @@ require 'yaml'
 
 class Sherlock
 
-  VERSION = "0.0.1"
+  VERSION = "0.0.5"
 
 end # End Of Class
 
 @root = Node.root
 
 require 'locations/baker_street'
+# require 'locations/lauriston_gardens'
 
 @root.find(:player).get_location.describe
 @root.find(:player).get_scene.describe

@@ -5,3 +5,6 @@ Initial project file structure generated using the [Hoe](http://docs.seattlerb.o
 
 __0.0.1__ */ 13-10-2013*  
 Basic storyline and implemented logic for the most important functions of the game engine. /bin now contains an executable. Gem was renamed to mr_holmes. 
+
+__0.0.2__ */ 26-11-2014*  
+Added notice to description about release date and prospects

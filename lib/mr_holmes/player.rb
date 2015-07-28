@@ -29,6 +29,17 @@ class Player < Node
 
   # ----------------------------------------------------------------- Actions
 
+  # Move the player around between locations
+  def do_cab(destination, *a)
+    location_string = destination
+    a.each { |x| location_string = location_string + "_#{x.to_str.downcase}" }
+    location = get_root.find(location_string.to_sym)
+    travel_to = location.children.first
+    get_location.move(self, travel_to)
+    get_location.describe
+    get_scene.describe
+  end
+
   # Move the player around between scenes
   def do_go(direction, *a)
     dest = get_scene.send("exit_#{direction}")

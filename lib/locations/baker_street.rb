@@ -85,11 +85,11 @@
     DESC
     item(:table, 'table') do
       self.desc = <<-DESC
-        A small table in the hallway on the ground floor. Any mail or telegrams recieved when you are not at home is usually
+        A small table in the hallway on the ground floor. Any mail recieved when you are not at home is usually
         put on this table.
       DESC
       self.short_desc = <<-DESC
-        A small table.
+        A small mail table.
       DESC
       self.presence = <<-PRES
         You see a small table placed against the wall.
@@ -99,7 +99,7 @@
           TELEGRAM: Mysterious case - stop - Lauriston Gardens nr. 3 - stop - come as soon as possible - stop - Lestrade
         DESC
         self.short_desc = <<-DESC
-          A Telegram from detective inspector Lestrade.
+          TELEGRAM: Mysterious case - stop - Lauriston Gardens nr. 3 - stop - come as soon as possible - stop - Lestrade
         DESC
       end
     end
